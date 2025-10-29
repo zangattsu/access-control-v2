@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+
+# testing
+coverage/
+
+# production build (Next.js)
+.next/
+out/
+
+# env files
+.env.local
+.env.*.local
+
+# logs and caches
+*.log
+.next.cache/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# editor folders
+.vscode/
+.idea/
