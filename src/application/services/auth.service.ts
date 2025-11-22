@@ -1,8 +1,8 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
-import { UsersService } from 'src/modules/users/users.service';
 import * as argon2 from 'argon2';
 import { JwtService } from '@nestjs/jwt';
-import { CreateUserDto } from 'src/domain/users/specifications/dtos/user.dto';
+import { UserDto } from 'src/domain/users/specifications/dtos/user.dto';
+import { UsersService } from './users.service';
 
 @Injectable()
 export class AuthService {
@@ -11,8 +11,8 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  async register(dto: CreateUserDto) {
-    const exists = await this.usersService.findByEmail(dto.email);
+  async register(dto: UserDto) {
+    const exists = await this.usersService.getByEmail(dto.email);
     if (exists) {
       throw new UnauthorizedException('Email already registered');
     }
@@ -21,7 +21,7 @@ export class AuthService {
   }
 
   async login(email: string, password: string) {
-    const user = await this.usersService.findByEmail(email);
+    const user = await this.usersService.getByEmail(email);
     if (!user) throw new UnauthorizedException('Invalid credentials');
     const ok = await argon2.verify(user.passwordHash, password);
     if (!ok) throw new UnauthorizedException('Invalid credentials');

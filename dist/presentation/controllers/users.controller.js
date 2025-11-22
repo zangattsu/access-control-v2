@@ -12,7 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const jwt_auth_guard_1 = require("../../modules/auth/guards/jwt-auth.guard");
+const jwt_auth_guard_1 = require("../../domain/auth/guards/jwt-auth.guard");
 let UsersController = class UsersController {
     async me() {
         return { ok: true };

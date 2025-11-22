@@ -1,8 +1,15 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiTags, ApiBody, ApiOkResponse } from '@nestjs/swagger';
-import { AuthService } from '../../application/auth.service';
-import { LoginDto } from '../../modules/auth/dto/login.dto';
+import { AuthService } from '../../application/services/auth.service';
+import { LoginDto } from '../../domain/auth/dto/login.dto';
 import { UserDto } from 'src/domain/users/specifications/dtos/user.dto';
+
+/**
+ * RESPONSABILIDADE: Receber requisições HTTP
+ * - Validar DTO
+ * - Chamar service
+ * - Retornar resposta HTTP
+ */
 
 @ApiTags('auth')
 @Controller('auth')

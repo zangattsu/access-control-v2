@@ -15,9 +15,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
 const common_1 = require("@nestjs/common");
 const swagger_1 = require("@nestjs/swagger");
-const auth_service_1 = require("../../modules/auth/auth.service");
-const login_dto_1 = require("../../modules/auth/dto/login.dto");
-const create_user_dto_1 = require("../../modules/users/dto/create-user.dto");
+const auth_service_1 = require("../../application/services/auth.service");
+const login_dto_1 = require("../../domain/auth/dto/login.dto");
+const user_dto_1 = require("../../domain/users/specifications/dtos/user.dto");
 let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
@@ -32,11 +32,11 @@ let AuthController = class AuthController {
 exports.AuthController = AuthController;
 __decorate([
     (0, common_1.Post)('register'),
-    (0, swagger_1.ApiBody)({ type: create_user_dto_1.CreateUserDto }),
+    (0, swagger_1.ApiBody)({ type: user_dto_1.UserDto }),
     (0, swagger_1.ApiOkResponse)({ description: 'Usuário registrado com sucesso' }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_user_dto_1.CreateUserDto]),
+    __metadata("design:paramtypes", [user_dto_1.UserDto]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "register", null);
 __decorate([
