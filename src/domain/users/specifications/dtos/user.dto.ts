@@ -1,7 +1,23 @@
-import { IsEmail, IsNotEmpty, MinLength } from 'class-validator';
+import { IsEmail, IsNotEmpty, IsOptional, IsString, MinLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class CreateUserDto {
+export class UserFiltroDto {
+  @IsOptional()
+  @IsString()
+  name: string;
+  
+  @IsOptional()
+  @IsString()
+  email: string;
+}
+
+export class UserResultadoDto {
+  total: number;
+  items: UserDto[];
+}
+
+
+export class UserDto {
   @ApiProperty({ example: 'new.user@example.com', description: 'Email único do usuário' })
   @IsEmail()
   email: string;

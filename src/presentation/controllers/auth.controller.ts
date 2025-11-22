@@ -1,8 +1,8 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { ApiTags, ApiBody, ApiOkResponse } from '@nestjs/swagger';
-import { AuthService } from '../../modules/auth/auth.service';
+import { AuthService } from '../../application/auth.service';
 import { LoginDto } from '../../modules/auth/dto/login.dto';
-import { CreateUserDto } from 'src/modules/users/dto/create-user.dto';
+import { UserDto } from 'src/domain/users/specifications/dtos/user.dto';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -10,9 +10,9 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
-  @ApiBody({ type: CreateUserDto })
+  @ApiBody({ type: UserDto })
   @ApiOkResponse({ description: 'Usuário registrado com sucesso' })
-  register(@Body() dto: CreateUserDto) {
+  register(@Body() dto: UserDto) {
     return this.authService.register(dto);
   }
 
