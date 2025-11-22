@@ -10,6 +10,7 @@ out/
 
 # env files
 .env.local
+.env
 .env.*.local
 
 # logs and caches
@@ -23,3 +24,6 @@ Thumbs.db
 # editor folders
 .vscode/
 .idea/
+
+# prisma sqlite database
+prisma/*.db
